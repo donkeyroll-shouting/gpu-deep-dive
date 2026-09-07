@@ -1,6 +1,6 @@
 site_name: GPU Deep Dive
 site_description: Notes and explanations for understanding modern GPUs.
-site_url: https://YOUR-GITHUB-USERNAME.github.io/YOUR-REPOSITORY-NAME/
+site_url: https://donkeyroll-shouting.github.io/gpu-deep-dive/
 
 theme:
   name: material
