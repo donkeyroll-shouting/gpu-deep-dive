@@ -1,23 +1,78 @@
 site_name: GPU Deep Dive
-site_description: Notes and explanations for understanding modern GPUs.
+site_description: 机制级深潜：面向资深云原生与系统工程师的 GPU 架构、K8s 交互与 AI 推理系统全景指南
 site_url: https://donkeyroll-shouting.github.io/gpu-deep-dive/
+
+repo_name: donkey-roll/gpu-deep-dive
+repo_url: https://github.com/donkey-roll/gpu-deep-dive
 
 theme:
   name: material
-  language: en
+  language: zh
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: deep purple
+      toggle:
+        icon: material/brightness-7
+        name: 切换至深色模式
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: deep purple
+      toggle:
+        icon: material/brightness-4
+        name: 切换至浅色模式
   features:
     - navigation.tabs
+    - navigation.sections
     - navigation.top
+    - search.suggest
+    - search.highlight
     - content.code.copy
+    - content.tabs.link
 
 markdown_extensions:
   - admonition
   - pymdownx.details
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
   - pymdownx.highlight:
       anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.arithmatex:
+      generic: true
   - toc:
       permalink: true
 
 nav:
-  - Home: index.md
+  - 导读与课程大纲: index.md
+  - 第一阶段 - 硬件微架构与计算物理极限:
+      - 模块 1 - GPU 微架构与 SM 计算模型: 01_gpu_hardware_architecture.md
+      - 模块 2 - 显存层级、带宽瓶颈与 Roofline 模型: 02_gpu_memory_hierarchy_and_roofline.md
+      - 模块 3 - 片间高速互联与通信拓扑: 03_interconnects_nvlink_pcie_rdma.md
+  - 第二阶段 - 驱动层、容器运行时与 K8s 硬件交付:
+      - 模块 4 - 从内核驱动到容器设备交付: 04_container_runtime_and_cdi.md
+      - 模块 5 - K8s Device Plugin 机制深析: 05_k8s_device_plugin_internals.md
+      - 模块 6 - 下一代动态资源分配 (DRA): 06_k8s_dra_dynamic_resource_allocation.md
+      - 模块 7 - GPU 虚拟化与切分共享技术: 07_gpu_sharing_and_virtualization.md
+      - 模块 8 - GPU Operator 与集群生命周期管理: 08_gpu_operator_and_cluster_lifecycle.md
+      - 模块 9 - GPU 集群可观测性与硬件可靠性治理: 09_gpu_observability_and_troubleshooting.md
+  - 第三阶段 - AI Inference 推理机制与分布式计算:
+      - 模块 10 - 大模型推理的计算与显存模型: 10_llm_inference_mechanisms.md
+      - 模块 11 - 现代推理引擎核心技术: 11_inference_engines_and_batching.md
+      - 模块 12 - 分布式推理与并行切分策略: 12_distributed_inference_and_parallelism.md
+  - 第四阶段 - K8s AI 推理生产级编排工程:
+      - 模块 13 - 生产级 AI 推理架构与编排落地: 13_k8s_ai_inference_production_engineering.md
+  - 附录:
+      - 附录 A - 主流现代 GPU 硬件规格与拓扑速查: appendix_hardware_matrix.md
+      - 附录 B - 典型 XID 硬件故障与运维手册: appendix_xid_troubleshooting.md
+      - 附录 C - 核心源码与经典必读论文索引: appendix_reading_list.md
