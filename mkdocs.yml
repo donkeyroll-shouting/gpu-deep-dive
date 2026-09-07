@@ -1,0 +1,23 @@
+site_name: GPU Deep Dive
+site_description: Notes and explanations for understanding modern GPUs.
+site_url: https://YOUR-GITHUB-USERNAME.github.io/YOUR-REPOSITORY-NAME/
+
+theme:
+  name: material
+  language: en
+  features:
+    - navigation.tabs
+    - navigation.top
+    - content.code.copy
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - toc:
+      permalink: true
+
+nav:
+  - Home: index.md
